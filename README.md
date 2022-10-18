@@ -3,7 +3,7 @@
 Discord: (https://discord.gg/bEs6cn3225)
 
 # Credits
-* [Ktoś](https://github.com/Ktos93) Thank you for agreeing to use the script [rdr_creator]
+* [Ktoś](https://github.com/Ktos93) Thank you for Agree to use the script [rdr_creator]
 
 # converted
 * [R S K](https://github.com/mn9-29) It was converted to QR completely
