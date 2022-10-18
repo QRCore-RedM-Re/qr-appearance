@@ -1,11 +1,11 @@
 # qr-appearance
 
-Discord: (https://discord.gg/bEs6cn3225)
+
 
 ![alt text](https://i.imgur.com/t5iVkMc.jpeg)
 ![alt text](https://i.imgur.com/8K0l7RY.png)
 
-
+Discord: (https://discord.gg/bEs6cn3225)
 
 
 # Credits
