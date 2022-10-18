@@ -2,6 +2,12 @@
 
 Discord: (https://discord.gg/bEs6cn3225)
 
+![alt text](https://i.imgur.com/t5iVkMc.jpeg)
+![alt text](https://i.imgur.com/8K0l7RY.png)
+
+
+
+
 # Credits
 * [Ktoś](https://github.com/Ktos93) Thank you for Agree to use the script [rdr_creator]
 
@@ -9,7 +15,7 @@ Discord: (https://discord.gg/bEs6cn3225)
 * [R S K](https://github.com/mn9-29) It was converted to QR completely
 
 # Dependencies
-* [QRCore](https://github.com/QRCore-RedM-Re)
+* [qr-core](https://github.com/QRCore-RedM-Re/qr-core)
 * [qr_menu](https://github.com/QRCore-RedM-Re/qr_menu)
 * [qr_cloths](https://github.com/QRCore-RedM-Re/qr-clothes)
 
