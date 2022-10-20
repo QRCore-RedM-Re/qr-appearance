@@ -91,7 +91,7 @@ function LoadModel(target, model)
     end
     Citizen.Wait(100)
     Citizen.InvokeNative(0xED40380076A31506, PlayerId(), _model, false)
-    Citizen.InvokeNative(0x77FF8D35EEC6BBC4, PlayerPedId(), 0, 0)
+    Citizen.InvokeNative(0x77FF8D35EEC6BBC4, PlayerPedId(), 7, true)
     NativeUpdatePedVariation(PlayerPedId())
 end
 
