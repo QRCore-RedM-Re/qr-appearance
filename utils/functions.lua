@@ -216,11 +216,11 @@ function LightAndCam()
         Wait(0)
         DrawLightWithRange(-561.36, SpawnCoords[AcitveCamera].y, SpawnCoords[AcitveCamera].z + 1, 255, 255, 255, 5.5,
             25.0)
-        local SelectString = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", "WELCOME TO BLACK WATER",
+        local SelectString = Citizen.InvokeNative(0xFA925AC00EB830B9, 10, "LITERAL_STRING", "Welcome To Q RedM Framework",
             Citizen.ResultAsLong())
         Citizen.InvokeNative(0xFA233F8FE190514C, SelectString)
         Citizen.InvokeNative(0xE9990552DEC71600)
-        local ChoiceGroupName = CreateVarString(10, 'LITERAL_STRING', "Choose a character")
+        local ChoiceGroupName = CreateVarString(10, 'LITERAL_STRING', "Choose a Character")
         PromptSetActiveGroupThisFrame(ChoiceGroup, ChoiceGroupName)
         if PromptHasHoldModeCompleted(PromptLeft) then
             if AcitveCamera ~= 1 then
