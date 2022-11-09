@@ -307,54 +307,57 @@ function OpenHairMenu()
     local elements = {}
     if IsPedMale(PlayerPedId()) then
         local a = 1
-        local category = hairs_list["male"]["hair"]
-        if CreatorCache["hair"] == nil or type(CreatorCache["hair"]) ~= "table" then
+		if CreatorCache["hair"] == nil or type(CreatorCache["hair"]) ~= "table" then
             CreatorCache["hair"] = {}
             CreatorCache["hair"].model = 0
             CreatorCache["hair"].texture = 1
         end
-        if CreatorCache["beard"] == nil or type(CreatorCache["beard"]) ~= "table" then
+		if CreatorCache["beard"] == nil or type(CreatorCache["beard"]) ~= "table" then
             CreatorCache["beard"] = {}
             CreatorCache["beard"].model = 0
             CreatorCache["beard"].texture = 1
             
         end
         local options = {}
+		-- male hair selection
+		local category = hairs_list["male"]["hair"]
         for k, v in pairs(category) do
             table.insert(options, QR.Texts.Style .. k)
         end
-        table.insert(elements, {label = QR.Texts.Hair, value = CreatorCache["hair"].model or 0, category = "hair", desc = "", type = "slider", min = 0, max = #category, change_type = "model", id = a, options = options})
+        table.insert(elements, {label = QR.Texts.HairStyle, value = CreatorCache["hair"].model or 0, category = "hair", desc = "", type = "slider", min = 0, max = #category, change_type = "model", id = a, options = options})
         a = a + 1
         options = {}
         for i = 1, GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), 1 do
             table.insert(options, QR.Texts.Color .. i)
         end
-        table.insert(elements, {label = QR.Texts.Hair, value = CreatorCache["hair"].texture or 1, category = "hair", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), change_type = "texture", id = a, options = options})
+        table.insert(elements, {label = QR.Texts.HairColor, value = CreatorCache["hair"].texture or 1, category = "hair", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), change_type = "texture", id = a, options = options})
         options = {}
         a = a + 1
-        local category = hairs_list["male"]["beard"]
+		-- male beard selection
+		local category = hairs_list["male"]["beard"]
         for k, v in pairs(category) do
             table.insert(options, QR.Texts.Style .. k)
         end
-        table.insert(elements, { label = QR.Texts.beard, value = CreatorCache["beard"].model or 0, category = "beard", desc = "", type = "slider", min = 0, max = #category, change_type = "model", id = a, options = options})
+        table.insert(elements, { label = QR.Texts.BeardStyle, value = CreatorCache["beard"].model or 0, category = "beard", desc = "", type = "slider", min = 0, max = #category, change_type = "model", id = a, options = options})
         a = a + 1
         options = {}
         for i = 1, GetMaxTexturesForModel("beard", CreatorCache["beard"].model or 1), 1 do
             table.insert(options, QR.Texts.Color .. i)
         end
-        table.insert(elements, {label = QR.Texts.Color, value = CreatorCache["beard"].texture or 1, category = "beard", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("beard", CreatorCache["beard"].model or 1), change_type = "texture", id = a, options = options})
+        table.insert(elements, {label = QR.Texts.BeardColor, value = CreatorCache["beard"].texture or 1, category = "beard", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("beard", CreatorCache["beard"].model or 1), change_type = "texture", id = a, options = options})
         options = {}
         a = a + 1
     else
         local a = 1
-        local category = hairs_list["female"]["hair"]
         if CreatorCache["hair"] == nil or type(CreatorCache["hair"]) ~= "table" then
             CreatorCache["hair"] = {}
             CreatorCache["hair"].model = 0
             CreatorCache["hair"].texture = 1
         end
         local options = {}
-        for k, v in pairs(category) do
+		-- female hair options
+        local category = hairs_list["female"]["hair"]
+		for k, v in pairs(category) do
             table.insert(options, QR.Texts.Style .. k)
         end
         table.insert(elements,
@@ -363,7 +366,7 @@ function OpenHairMenu()
         a = a + 1
         options = {}
         for i = 1, GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), 1 do
-            table.insert(options, QR.Texts.Color .. i)
+            table.insert(options, QR.Texts.Hair_Color .. i)
         end
         table.insert(elements,
             {label = QR.Texts.Hair, value = CreatorCache["hair"].texture or 1, category = "hair", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), change_type = "texture", id = a, options = options}
