@@ -27,7 +27,6 @@ local MainMenus = {
         MenuData.CloseAll()
         LoadedComponents = CreatorCache
         TriggerServerEvent("qr_appearance:SaveSkin", CreatorCache)
-        TriggerEvent("redemrp_respawn:respawn", true)
     end
 }
 local BodyFunctions = {
@@ -187,12 +186,10 @@ AddEventHandler('qr_appearance:ApplySkin', function(SkinData, Target, ClothesDat
         LoadBodySize(_Target, _SkinData)
         LoadBodyWaist(_Target, _SkinData)
         LoadOverlays(_Target, _SkinData)
-        TriggerServerEvent("redemrp_respawn:TestDeathStatus")
         SetEntityAlpha(_Target, 255)
         TriggerEvent("qr_appearance:SkinLoaded", _SkinData, _Target, ClothesData)
         if _Target == PlayerPedId() then
             TriggerServerEvent("qr_clothes:LoadClothes", 1)
-            TriggerServerEvent("redemrp_clothing:loadClothes", 1)
         else
             TriggerEvent("qr_clothes:ApplyClothes", ClothesData, _Target)
             for i, m in pairs(overlay_all_layers) do
