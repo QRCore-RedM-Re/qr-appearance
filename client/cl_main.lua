@@ -363,7 +363,7 @@ function OpenHairMenu()
         a = a + 1
         options = {}
         for i = 1, GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), 1 do
-            table.insert(options, QR.Texts.Hair_Color .. i)
+            table.insert(options, QR.Texts.HairColor .. i)
         end
         table.insert(elements,
             {label = QR.Texts.Hair, value = CreatorCache["hair"].texture or 1, category = "hair", desc = "", type = "slider", min = 1, max = GetMaxTexturesForModel("hair", CreatorCache["hair"].model or 1), change_type = "texture", id = a, options = options}
