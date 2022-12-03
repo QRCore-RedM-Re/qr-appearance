@@ -135,7 +135,7 @@ local EyebrowsFunctions = {
         LoadFeatures(target, data)
     end
 }
-Citizen.CreateThread(function()
+CreateThread(function()
     for i, v in pairs(cloth_hash_names) do
         if v.category_hashname == "BODIES_LOWER" or v.category_hashname == "BODIES_UPPER" or v.category_hashname ==
             "heads" or v.category_hashname == "hair" or v.category_hashname == "teeth" or v.category_hashname == "eyes" then
@@ -166,7 +166,7 @@ end)
 
 RegisterNetEvent('qr_appearance:ApplySkin')
 AddEventHandler('qr_appearance:ApplySkin', function(SkinData, Target, ClothesData)
-    Citizen.CreateThread(function()
+    CreateThread(function()
         local _Target = Target or PlayerPedId()
         local _SkinData = SkinData
         if _Target == PlayerPedId() then
@@ -232,11 +232,14 @@ function StartCreator()
     local model = GetPedModel(selectedSex)
     LoadModel(PlayerPedId(), model)
     FixIssues(PlayerPedId())
+    SetEntityVisible(PlayerPedId(), true)
     DeletePeds(SpawnedPeds)
     MainMenu()
 end
-function MainMenu()
+
+function MainMenu(Target)
     MenuData.CloseAll()
+    local _Target = Target or PlayerPedId()
     local elements = {
         {label = QR.Texts.Body, value = 'body', desc = ""},
         {label = QR.Texts.Face, value = 'face', desc = ""},
