@@ -1,7 +1,6 @@
 local QRCore = exports['qr-core']:GetCoreObject()
 
-RegisterServerEvent('qr_appearance:SaveSkin')
-AddEventHandler('qr_appearance:SaveSkin', function(skin)
+RegisterServerEvent('qr_appearance:SaveSkin', function(skin)
     local _skin = skin
     local _source = source
     local encode = json.encode(_skin)
@@ -18,15 +17,11 @@ AddEventHandler('qr_appearance:SaveSkin', function(skin)
     TriggerClientEvent('qr-spawn:client:setupSpawnUI', source, encode, true)
 end)
 
-RegisterServerEvent('qr_appearance:SetPlayerBucket')
-AddEventHandler('qr_appearance:SetPlayerBucket', function(b)
-print(b)
-print(GetPlayerRoutingBucket(source))
+RegisterServerEvent('qr_appearance:SetPlayerBucket', function(b)
    SetPlayerRoutingBucket(source, b)
 end)
 
-RegisterServerEvent('qr_appearance:LoadSkin')
-AddEventHandler('qr_appearance:LoadSkin', function()
+RegisterServerEvent('qr_appearance:LoadSkin', function()
     local _source = source
     local User = QRCore.Functions.GetPlayer(source)
     local citizenid = User.PlayerData.citizenid
@@ -51,8 +46,7 @@ AddEventHandler('redemrp_db:retrieveSkin', function(citizenid, license, callback
     end
 end)
 
-RegisterServerEvent("qr_appearance:deleteSkin")
-AddEventHandler("qr_appearance:deleteSkin", function(license, Callback)
+RegisterServerEvent("qr_appearance:deleteSkin", function(license, Callback)
     local _source = source
     local id
     for k, v in ipairs(GetPlayerIdentifiers(_source)) do
