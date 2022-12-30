@@ -76,7 +76,7 @@ QR.Texts = {
     Distance = "Distance",
     Angle = "Angle",
     Clarity = "Clarity",
-    Color1 ="<img src='nui://qr-appearance/img/skin1.png' height='20'>",
+    Color1 = "<img src='nui://qr-appearance/img/skin1.png' height='20'>",
     Color2 = "<img src='nui://qr-appearance/img/skin2.png' height='20'>",
     Color3 = "<img src='nui://qr-appearance/img/skin3.png' height='20'>",
     Color4 = "<img src='nui://qr-appearance/img/skin4.png' height='20'>",

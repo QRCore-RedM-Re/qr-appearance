@@ -164,8 +164,7 @@ CreateThread(function()
     end
 end)
 
-RegisterNetEvent('qr_appearance:ApplySkin')
-AddEventHandler('qr_appearance:ApplySkin', function(SkinData, Target, ClothesData)
+RegisterNetEvent('qr_appearance:ApplySkin', function(SkinData, Target, ClothesData)
     CreateThread(function()
         local _Target = Target or PlayerPedId()
         local _SkinData = SkinData
@@ -200,21 +199,19 @@ AddEventHandler('qr_appearance:ApplySkin', function(SkinData, Target, ClothesDat
     end)
 end)
 
-RegisterNetEvent('qr_appearance:OpenCreator')
-AddEventHandler('qr_appearance:OpenCreator', function()
+RegisterNetEvent('qr_appearance:OpenCreator', function()
     StartCreator()
 end)
 
-RegisterNetEvent('qr_appearance:LoadSkinClient')
-AddEventHandler('qr_appearance:LoadSkinClient', function()
+RegisterNetEvent('qr_appearance:LoadSkinClient', function()
     TriggerServerEvent("qr_appearance:LoadSkin")
 end)
 
-RegisterCommand('loadskin', function(source, args, raw)
+RegisterCommand('loadskin', function()
     TriggerServerEvent("qr_appearance:LoadSkin")
 end)
 
-RegisterCommand('creator', function(source, args, raw)
+RegisterCommand('creator', function()
     StartCreator()
 end)
 
@@ -316,7 +313,7 @@ function OpenHairMenu()
             CreatorCache["beard"] = {}
             CreatorCache["beard"].model = 0
             CreatorCache["beard"].texture = 1
-            
+
         end
         local options = {}
 		-- male hair selection
