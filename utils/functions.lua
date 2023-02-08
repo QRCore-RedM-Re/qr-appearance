@@ -83,6 +83,7 @@ function ApplyOverlays(overlayTarget)
 end
 
 function LoadModel(target, model)
+    local ped = PlayerPedId()
     local _model = GetHashKey(model)
     while not HasModelLoaded(_model) do
         Wait(1)
@@ -90,8 +91,8 @@ function LoadModel(target, model)
     end
     Citizen.Wait(100)
     Citizen.InvokeNative(0xED40380076A31506, PlayerId(), _model, false)
-    Citizen.InvokeNative(0x77FF8D35EEC6BBC4, PlayerPedId(), 7, true)
-    NativeUpdatePedVariation(PlayerPedId())
+    Citizen.InvokeNative(0x77FF8D35EEC6BBC4, ped, 7, true)
+    NativeUpdatePedVariation(ped)
 end
 
 function SpawnPeds()
@@ -195,12 +196,12 @@ Citizen.CreateThread(function()
 end)
 
 function StartSelectCam()
+    local ped = PlayerPedId()
     DoScreenFadeOut(1000)
     Wait(1000)
-    SetEntityCoords(PlayerPedId(), -563.99, -3776.72, 237.60)
+    SetEntityCoords(ped, -563.99, -3776.72, 237.60)
     Wait(2000)
-    cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", CameraCoords[1].x, CameraCoords[1].y, CameraCoords[1].z, 0, 0,
-        0, GetGameplayCamFov())
+    cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", CameraCoords[1].x, CameraCoords[1].y, CameraCoords[1].z, 0, 0, 0, GetGameplayCamFov())
     PointCamAtCoord(cam, SpawnCoords[1])
     SetCamActive(cam, true)
     RenderScriptCams(true, true, 1000, true, false)
@@ -257,16 +258,17 @@ local CharacterCreatorCamera
 
 function CreatorLight()
     Citizen.CreateThread(function()
+        local ped = PlayerPedId()
         while CharacterCreatorCamera do
             Wait(0)
             DrawLightWithRange(-560.133, -3780.92, 238.6, 255, 255, 255, 10.5, 50.0)
             if IsDisabledControlPressed(0, 0x06052D11) then
-                local heading = GetEntityHeading(PlayerPedId())
-                SetEntityHeading(PlayerPedId(), heading + 2)
+                local heading = GetEntityHeading(ped)
+                SetEntityHeading(ped, heading + 2)
             end
             if IsDisabledControlPressed(0, 0x110AD1D2) then
-                local heading = GetEntityHeading(PlayerPedId())
-                SetEntityHeading(PlayerPedId(), heading - 2)
+                local heading = GetEntityHeading(ped)
+                SetEntityHeading(ped, heading - 2)
             end
             DisableAllControlActions(0)
             DisableAllControlActions(1)
@@ -278,8 +280,9 @@ end
 -- EZC74cSnnr
 
 function StartCharacterCreatorCamera()
-    SetEntityCoords(PlayerPedId(), -558.32, -3781.11, 237.60)
-    SetEntityHeading(PlayerPedId(), 102.0)
+    local ped = PlayerPedId()
+    SetEntityCoords(ped, -558.32, -3781.11, 237.60)
+    SetEntityHeading(ped, 102.0)
     local cam2 = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", -558.84, -3779.27, 238.6, 0, 0, 0, GetGameplayCamFov())
     SetCamActive(cam2, true)
     SetCamActiveWithInterp(cam2, cam, 1000)
@@ -288,13 +291,11 @@ function StartCharacterCreatorCamera()
     SetCamActive(cam, false)
     DestroyCam(cam)
     cam = nil
-    CharacterCreatorCamera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", -560.133, -3780.92, 238.6, 0, 0, 0,
-        GetGameplayCamFov())
+    CharacterCreatorCamera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", -560.133, -3780.92, 238.6, 0, 0, 0, GetGameplayCamFov())
     SetCamActive(CharacterCreatorCamera, true)
     SetCamActiveWithInterp(CharacterCreatorCamera, cam2, 1000)
     PointCamAtCoord(CharacterCreatorCamera, -558.32, -3781.11, 238.60)
     CreatorLight()
-
 end
 
 function MoveCharacterCreatorCamera(x, y, z)
@@ -309,13 +310,14 @@ function MoveCharacterCreatorCamera(x, y, z)
 end
 
 function EndCharacterCreatorCam()
+    local ped = PlayerPedId()
     RenderScriptCams(false, true, 1000, true, false)
     DestroyCam(CharacterCreatorCamera, false)
     CharacterCreatorCamera = nil
     DisplayHud(true)
     DisplayRadar(true)
     DestroyAllCams(true)
-    FreezeEntityPosition(PlayerPedId() , false)
+    FreezeEntityPosition(ped , false)
 end
 
 function LoadBoody(target, data)
@@ -698,12 +700,11 @@ function HasBodyComponentsLoaded(target, hair, beard)
 end
 
 function GetMaxTexturesForModel(category, model)
-    -- print(model)
-    -- print(category)
+    local ped = PlayerPedId()
     if model == 0 then
         model = 1
     end
-    if IsPedMale(PlayerPedId()) then
+    if IsPedMale(ped) then
         return #hairs_list["male"][category][model]
     else
         return #hairs_list["female"][category][model]
