@@ -42,7 +42,6 @@ function ChangeOverlays(name, visibility, tx_id, tx_normal, tx_material, tx_colo
             end
         end
     end
-
 end
 
 function ApplyOverlays(overlayTarget)
@@ -507,6 +506,13 @@ function LoadHair(target, data)
                 end
             end
         end
+    end
+end
+
+function LoadHeight(target, data)
+    if data.height ~= nil then
+        Wait(100)
+        SetPedScale(target, tonumber(data.height / 100))
     end
 end
 
