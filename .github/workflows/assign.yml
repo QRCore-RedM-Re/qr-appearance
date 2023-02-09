@@ -5,6 +5,8 @@ on:
 
 permissions:
   contents: read
+  checks: write
+  id-token: write
 
 jobs:
   issue_assign:
