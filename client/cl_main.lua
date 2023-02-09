@@ -38,15 +38,18 @@ local BodyFunctions = {
         LoadFeatures(target, data)
     end,
     ["skin_tone"] = function(target, data)
-        LoadBoody(target, data)
+        LoadBody(target, data)
         LoadOverlays(target, data)
     end,
     ["body_size"] = function(target, data)
         LoadBodySize(target, data)
-        LoadBoody(target, data)
+        LoadBody(target, data)
     end,
     ["body_waist"] = function(target, data)
         LoadBodyWaist(target, data)
+    end,
+    ["height"] = function(target, data)
+        LoadHeight(target, data)
     end
 }
 local FaceFunctions = {
@@ -176,7 +179,8 @@ RegisterNetEvent('qr_appearance:ApplySkin', function(SkinData, Target, ClothesDa
             LoadedComponents = _SkinData
         end
         FixIssues(_Target, _SkinData)
-        LoadBoody(_Target, _SkinData)
+        LoadHeight(_Target, _SkinData)
+        LoadBody(_Target, _SkinData)
         LoadHead(_Target, _SkinData)
         LoadHair(_Target, _SkinData)
         LoadBeard(_Target, _SkinData)
@@ -256,13 +260,19 @@ function OpenBodyMenu()
     for i, v in ipairs(WAIST_TYPES) do
         table.insert(BodyWaistOptions, "+ " .. (i / 2) .. " kg")
     end
+
+    local HeightOptions = {}
+    for i = 88, 106 do
+        table.insert(HeightOptions, i .. "")
+    end
     local SkinToneOptions = {QR.Texts.Color1,QR.Texts.Color2,QR.Texts.Color3,QR.Texts.Color4,QR.Texts.Color5,QR.Texts.Color6}
     local elements = {
         {label = QR.Texts.Face, value = CreatorCache["head"] or 1, category = "head", desc = "", type = "slider", min = 1, max = 120, hop = 6},
         {label = QR.Texts.Width, value = CreatorCache["face_width"] or 0, category = "face_width", desc = "", type = "slider", min = -100, max = 100, hop = 5},
         {label = QR.Texts.SkinTone, value = CreatorCache["skin_tone"] or 1, category = "skin_tone", desc = "", type = "slider", min = 1, max = 6, options = SkinToneOptions},
         {label = QR.Texts.Size, value = CreatorCache["body_size"] or 3, category = "body_size", desc = "", type = "slider", min = 1, max = 5, options = BodySizeOptions},
-        {label = QR.Texts.Waist, value = CreatorCache["body_waist"] or 7, category = "body_waist", desc = "", type = "slider", min = 1, max = 21, options = BodyWaistOptions}
+        {label = QR.Texts.Waist, value = CreatorCache["body_waist"] or 7, category = "body_waist", desc = "", type = "slider", min = 1, max = 21, options = BodyWaistOptions},
+        { label = QR.Texts.Height,   value = CreatorCache["height"] or 94,    category = "height",     desc = "Change height", type = "slider", min = 88,   max = 106, options = HeightOptions }
     }
     MenuData.Open('default', GetCurrentResourceName(), 'body_character_creator_menu',
         {title = QR.Texts.Appearance, subtext = QR.Texts.Options, align = QR.Texts.align, elements = elements}, function(data, menu)
