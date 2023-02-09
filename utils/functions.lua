@@ -319,7 +319,7 @@ function EndCharacterCreatorCam()
     FreezeEntityPosition(PlayerPedId() , false)
 end
 
-function LoadBoody(target, data)
+function LoadBody(target, data)
     local output = GetSkinColorFromBodySize(tonumber(data.body_size), tonumber(data.skin_tone))
     if IsPedMale(target) then
         if tonumber(data.skin_tone) == 1 then
@@ -510,6 +510,13 @@ function LoadHair(target, data)
     end
 end
 
+function LoadHeight(target, data)
+    if data.height ~= nil then
+        Wait(100)
+        SetPedScale(target, tonumber(data.height / 100))
+    end
+end
+
 function LoadBeard(target, data)
     if data.beard ~= nil then
         if type(data.beard) == "table" then
@@ -533,8 +540,6 @@ function LoadBeard(target, data)
         end
     end
 end
-
-
 
 function LoadHead(target, data)
     if IsPedMale(target) then
